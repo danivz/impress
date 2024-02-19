@@ -104,7 +104,13 @@ ENTITY fast_icap_sysarr IS
       s_axi_mem_rlast   : out std_logic;
       s_axi_mem_ruser   : out std_logic_vector(C_S_AXI_MEM_RUSER_WIDTH-1 downto 0);
       s_axi_mem_rvalid  : out std_logic;
-      s_axi_mem_rready  : in std_logic
+      s_axi_mem_rready  : in std_logic;
+
+      -- External ICAP ports
+      icap_i      : out std_logic_vector(31 downto 0);
+      icap_o      : in  std_logic_vector(31 downto 0);
+      icap_csib   : out std_logic;
+      icap_rdwrb  : out std_logic
    );
 END ENTITY;
 
@@ -282,7 +288,12 @@ ICAP_CTRL_INST : entity work.icap_ctrl
       Mem_WE     => mem_we_b,
       Mem_Addr   => mem_addr_b,
       Mem_D      => mem_d_b,
-      Mem_Q      => mem_q_b
+      Mem_Q      => mem_q_b,
+      -- External ICAP ports
+      p_icap_o     => icap_o,
+      p_icap_i     => icap_i,
+      p_icap_csib  => icap_csib,
+      p_icap_rdwrb => icap_rdwrb
    );
 
 

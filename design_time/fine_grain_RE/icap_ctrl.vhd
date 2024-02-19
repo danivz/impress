@@ -110,7 +110,13 @@ ENTITY icap_ctrl IS
       Mem_WE     : out std_logic;
       Mem_Addr   : out std_logic_vector (MEM_A_BITS-1 downto 0);
       Mem_D      : out std_logic_vector (MEM_D_BITS-1 downto 0);
-      Mem_Q      : in  std_logic_vector (MEM_D_BITS-1 downto 0)
+      Mem_Q      : in  std_logic_vector (MEM_D_BITS-1 downto 0);
+
+      -- External ICAP ports
+      p_icap_o     : in  std_logic_vector(31 downto 0);
+      p_icap_i     : out std_logic_vector(31 downto 0);
+      p_icap_csib  : out std_logic;
+      p_icap_rdwrb : out std_logic
    );
    -- attribute mark_debug : string;
    -- attribute mark_debug of Mem_Addr: signal is "true";
@@ -498,26 +504,11 @@ end process;
 
 
 
--- synthesis translate_off
--- DO_NOT_SIMULATE_ICAP : if false generate
--- synthesis translate_on
-
--- ICAP instantiation
-ICAP_INST : ICAPE2
-   generic map (
-      ICAP_WIDTH => "X32"
-   )
-   port map (
-      CLK   => clk            ,  -- Clock input
-      CSIB  => icap_ce        ,  -- Clock enable input
-      I     => icap_i_bitswap ,  -- 32-bit data input
-      O     => icap_o_bitswap ,  -- 32-bit data output
-      RDWRB => icap_write        -- Write input
-   );
-
--- synthesis translate_off
--- end generate DO_NOT_SIMULATE_ICAP;
--- synthesis translate_on
+-- External ICAP connections
+p_icap_csib     <= icap_ce;
+p_icap_rdwrb    <= icap_write;
+p_icap_i        <= icap_i_bitswap;
+icap_o_bitswap  <= p_icap_o;
 
 
 
