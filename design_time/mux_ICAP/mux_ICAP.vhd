@@ -34,32 +34,47 @@ entity mux_ICAP is
     s00_axi_rvalid  : out std_logic;
     s00_axi_rready  : in std_logic;
     
-    -- ICAP interface 0
-    icap_csib_0  : in std_logic;
-    icap_rdwrb_0 : in std_logic;
-    icap_i_0     : in  std_logic_vector(31 downto 0);
-    icap_o_0     : out std_logic_vector(31 downto 0);
+    -- HBICAP ICAP interface
+    icap_csib_hbicap  : in std_logic;
+    icap_rdwrb_hbicap : in std_logic;
+    icap_i_hbicap     : in  std_logic_vector(31 downto 0);
+    icap_o_hbicap     : out std_logic_vector(31 downto 0);
 
-    -- ICAP interface 0
-    icap_csib_1  : in std_logic;
-    icap_rdwrb_1 : in std_logic;
-    icap_i_1     : in  std_logic_vector(31 downto 0);
-    icap_o_1     : out std_logic_vector(31 downto 0);
-    
-    -- ICAP arbiter interface
-    req  : in std_logic;
-    gnt : out std_logic;
-    rel  : out std_logic
+    -- HBICAP clock gating signal
+    gate_icap_clk_hbicap : in std_logic;
+
+    -- HBICAP arbiter interface
+    req_hbicap  : in std_logic;
+    gnt_hbicap : out std_logic;
+    rel_hbicap  : out std_logic;
+
+    -- Fine grain RE ICAP interface
+    icap_csib_fgre  : in std_logic;
+    icap_rdwrb_fgre : in std_logic;
+    icap_i_fgre     : in  std_logic_vector(31 downto 0);
+    icap_o_fgre     : out std_logic_vector(31 downto 0)    
   );
+  --attribute MARK_DEBUG : string;
+  --attribute mark_debug of icap_csib_hbicap: signal is "true";
+  --attribute mark_debug of icap_rdwrb_hbicap: signal is "true";
+  --attribute mark_debug of icap_i_hbicap: signal is "true";
+  --attribute mark_debug of icap_o_hbicap: signal is "true";
+  --attribute mark_debug of gate_icap_clk_hbicap: signal is "true";
+  --attribute mark_debug of icap_csib_fgre: signal is "true";
+  --attribute mark_debug of icap_rdwrb_fgre: signal is "true";
+  --attribute mark_debug of icap_i_fgre: signal is "true";
+  --attribute mark_debug of icap_o_fgre: signal is "true";
 end mux_ICAP;
 
 architecture Behavioral of mux_ICAP is
-
-  signal icap_csib, icap_rdwrb, mux_selector, req_reg : std_logic;
+  
+  signal icap_csib, icap_rdwrb, mux_selector : std_logic;
   signal icap_i, icap_o : std_logic_vector(31 downto 0);
+  signal n_gate_icap_clk_hbicap, clock_gate, icap_clk : std_logic;
 
 begin
 
+  -- Comm
   AXI_INST : entity work.s_axi_ctrl
     generic map (
       C_S_AXI_DATA_WIDTH => C_S00_AXI_DATA_WIDTH,
@@ -91,37 +106,38 @@ begin
     );
 
   -- Multiplexer
-  icap_csib  <= icap_csib_0 when mux_selector = '0' else icap_csib_1;
-  icap_rdwrb <= icap_rdwrb_0 when mux_selector = '0' else icap_rdwrb_1;
-  icap_i     <= icap_i_0 when mux_selector = '0' else icap_i_1;
-  icap_o_0   <= icap_o when mux_selector = '0' else (others => '0');
-  icap_o_1   <= icap_o when mux_selector = '1' else (others => '0');
+  icap_csib  <= icap_csib_hbicap when mux_selector = '0' else icap_csib_fgre;
+  icap_rdwrb <= icap_rdwrb_hbicap when mux_selector = '0' else icap_rdwrb_fgre;
+  icap_i     <= icap_i_hbicap when mux_selector = '0' else icap_i_fgre;
+  icap_o_hbicap   <= icap_o when mux_selector = '0' else (others => '0');
+  icap_o_fgre   <= icap_o when mux_selector = '1' else (others => '0');
 
+  -- Clock gate for the ICAP clock
+  BUFGCE_inst : BUFGCE
+    port map (
+      CE => clock_gate,
+      I => s00_axi_aclk,
+      O => icap_clk
+    );
 
+  n_gate_icap_clk_hbicap <= not gate_icap_clk_hbicap;
+  clock_gate <= n_gate_icap_clk_hbicap when mux_selector = '0' else '1';
+
+  -- ICAP
   ICAP_INST : ICAPE2
     generic map (
       ICAP_WIDTH => "X32"
     )
     port map (
-      CLK   => s00_axi_aclk,
+      CLK   => icap_clk,
       CSIB  => icap_csib,
       I     => icap_i,
       O     => icap_o,
       RDWRB => icap_rdwrb
     );
-
-  process (s00_axi_aclk)
-  begin
-    if rising_edge(s00_axi_aclk) then 
-      if s00_axi_aresetn = '0' then
-        req_reg <= '0';
-      else
-        req_reg <= req;
-      end if;
-    end if;
-  end process; 
-    
-  gnt <= req_reg;
-  rel <= '0';
+  
+  -- Arbiter
+  gnt_hbicap <= '1';
+  rel_hbicap <= '0';
 
 end Behavioral;

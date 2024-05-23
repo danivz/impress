@@ -216,7 +216,7 @@
       </spirit:parameters>
     </spirit:busInterface>
     <spirit:busInterface>
-      <spirit:name>S0_ICAP</spirit:name>
+      <spirit:name>ICAP_HBICAP</spirit:name>
       <spirit:busType spirit:vendor="xilinx.com" spirit:library="interface" spirit:name="icap" spirit:version="1.0"/>
       <spirit:abstractionType spirit:vendor="xilinx.com" spirit:library="interface" spirit:name="icap_rtl" spirit:version="1.0"/>
       <spirit:slave/>
@@ -226,7 +226,7 @@
             <spirit:name>rdwrb</spirit:name>
           </spirit:logicalPort>
           <spirit:physicalPort>
-            <spirit:name>icap_rdwrb_0</spirit:name>
+            <spirit:name>icap_rdwrb_hbicap</spirit:name>
           </spirit:physicalPort>
         </spirit:portMap>
         <spirit:portMap>
@@ -234,7 +234,7 @@
             <spirit:name>i</spirit:name>
           </spirit:logicalPort>
           <spirit:physicalPort>
-            <spirit:name>icap_i_0</spirit:name>
+            <spirit:name>icap_i_hbicap</spirit:name>
           </spirit:physicalPort>
         </spirit:portMap>
         <spirit:portMap>
@@ -242,7 +242,7 @@
             <spirit:name>csib</spirit:name>
           </spirit:logicalPort>
           <spirit:physicalPort>
-            <spirit:name>icap_csib_0</spirit:name>
+            <spirit:name>icap_csib_hbicap</spirit:name>
           </spirit:physicalPort>
         </spirit:portMap>
         <spirit:portMap>
@@ -250,13 +250,13 @@
             <spirit:name>o</spirit:name>
           </spirit:logicalPort>
           <spirit:physicalPort>
-            <spirit:name>icap_o_0</spirit:name>
+            <spirit:name>icap_o_hbicap</spirit:name>
           </spirit:physicalPort>
         </spirit:portMap>
       </spirit:portMaps>
     </spirit:busInterface>
     <spirit:busInterface>
-      <spirit:name>S1_ICAP</spirit:name>
+      <spirit:name>ICAP_FGRE</spirit:name>
       <spirit:busType spirit:vendor="xilinx.com" spirit:library="interface" spirit:name="icap" spirit:version="1.0"/>
       <spirit:abstractionType spirit:vendor="xilinx.com" spirit:library="interface" spirit:name="icap_rtl" spirit:version="1.0"/>
       <spirit:slave/>
@@ -266,7 +266,7 @@
             <spirit:name>rdwrb</spirit:name>
           </spirit:logicalPort>
           <spirit:physicalPort>
-            <spirit:name>icap_rdwrb_1</spirit:name>
+            <spirit:name>icap_rdwrb_fgre</spirit:name>
           </spirit:physicalPort>
         </spirit:portMap>
         <spirit:portMap>
@@ -274,7 +274,7 @@
             <spirit:name>i</spirit:name>
           </spirit:logicalPort>
           <spirit:physicalPort>
-            <spirit:name>icap_i_1</spirit:name>
+            <spirit:name>icap_i_fgre</spirit:name>
           </spirit:physicalPort>
         </spirit:portMap>
         <spirit:portMap>
@@ -282,7 +282,7 @@
             <spirit:name>csib</spirit:name>
           </spirit:logicalPort>
           <spirit:physicalPort>
-            <spirit:name>icap_csib_1</spirit:name>
+            <spirit:name>icap_csib_fgre</spirit:name>
           </spirit:physicalPort>
         </spirit:portMap>
         <spirit:portMap>
@@ -290,13 +290,13 @@
             <spirit:name>o</spirit:name>
           </spirit:logicalPort>
           <spirit:physicalPort>
-            <spirit:name>icap_o_1</spirit:name>
+            <spirit:name>icap_o_fgre</spirit:name>
           </spirit:physicalPort>
         </spirit:portMap>
       </spirit:portMaps>
     </spirit:busInterface>
     <spirit:busInterface>
-      <spirit:name>ICAP_ARB</spirit:name>
+      <spirit:name>ICAP_ARB_HBICAP</spirit:name>
       <spirit:busType spirit:vendor="xilinx.com" spirit:library="interface" spirit:name="arb" spirit:version="1.0"/>
       <spirit:abstractionType spirit:vendor="xilinx.com" spirit:library="interface" spirit:name="arb_rtl" spirit:version="1.0"/>
       <spirit:slave/>
@@ -306,7 +306,7 @@
             <spirit:name>GNT</spirit:name>
           </spirit:logicalPort>
           <spirit:physicalPort>
-            <spirit:name>gnt</spirit:name>
+            <spirit:name>gnt_hbicap</spirit:name>
           </spirit:physicalPort>
         </spirit:portMap>
         <spirit:portMap>
@@ -314,7 +314,7 @@
             <spirit:name>REL</spirit:name>
           </spirit:logicalPort>
           <spirit:physicalPort>
-            <spirit:name>rel</spirit:name>
+            <spirit:name>rel_hbicap</spirit:name>
           </spirit:physicalPort>
         </spirit:portMap>
         <spirit:portMap>
@@ -322,7 +322,7 @@
             <spirit:name>REQ</spirit:name>
           </spirit:logicalPort>
           <spirit:physicalPort>
-            <spirit:name>req</spirit:name>
+            <spirit:name>req_hbicap</spirit:name>
           </spirit:physicalPort>
         </spirit:portMap>
       </spirit:portMaps>
@@ -356,7 +356,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>7544c2b3</spirit:value>
+            <spirit:value>6bb4ae77</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -372,7 +372,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>7544c2b3</spirit:value>
+            <spirit:value>6bb4ae77</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -735,7 +735,7 @@
         </spirit:wire>
       </spirit:port>
       <spirit:port>
-        <spirit:name>icap_csib_0</spirit:name>
+        <spirit:name>icap_csib_hbicap</spirit:name>
         <spirit:wire>
           <spirit:direction>in</spirit:direction>
           <spirit:wireTypeDefs>
@@ -748,7 +748,7 @@
         </spirit:wire>
       </spirit:port>
       <spirit:port>
-        <spirit:name>icap_rdwrb_0</spirit:name>
+        <spirit:name>icap_rdwrb_hbicap</spirit:name>
         <spirit:wire>
           <spirit:direction>in</spirit:direction>
           <spirit:wireTypeDefs>
@@ -761,67 +761,7 @@
         </spirit:wire>
       </spirit:port>
       <spirit:port>
-        <spirit:name>icap_i_0</spirit:name>
-        <spirit:wire>
-          <spirit:direction>in</spirit:direction>
-          <spirit:vector>
-            <spirit:left spirit:format="long">31</spirit:left>
-            <spirit:right spirit:format="long">0</spirit:right>
-          </spirit:vector>
-          <spirit:wireTypeDefs>
-            <spirit:wireTypeDef>
-              <spirit:typeName>std_logic_vector</spirit:typeName>
-              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
-              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
-            </spirit:wireTypeDef>
-          </spirit:wireTypeDefs>
-        </spirit:wire>
-      </spirit:port>
-      <spirit:port>
-        <spirit:name>icap_o_0</spirit:name>
-        <spirit:wire>
-          <spirit:direction>out</spirit:direction>
-          <spirit:vector>
-            <spirit:left spirit:format="long">31</spirit:left>
-            <spirit:right spirit:format="long">0</spirit:right>
-          </spirit:vector>
-          <spirit:wireTypeDefs>
-            <spirit:wireTypeDef>
-              <spirit:typeName>std_logic_vector</spirit:typeName>
-              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
-              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
-            </spirit:wireTypeDef>
-          </spirit:wireTypeDefs>
-        </spirit:wire>
-      </spirit:port>
-      <spirit:port>
-        <spirit:name>icap_csib_1</spirit:name>
-        <spirit:wire>
-          <spirit:direction>in</spirit:direction>
-          <spirit:wireTypeDefs>
-            <spirit:wireTypeDef>
-              <spirit:typeName>std_logic</spirit:typeName>
-              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
-              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
-            </spirit:wireTypeDef>
-          </spirit:wireTypeDefs>
-        </spirit:wire>
-      </spirit:port>
-      <spirit:port>
-        <spirit:name>icap_rdwrb_1</spirit:name>
-        <spirit:wire>
-          <spirit:direction>in</spirit:direction>
-          <spirit:wireTypeDefs>
-            <spirit:wireTypeDef>
-              <spirit:typeName>std_logic</spirit:typeName>
-              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
-              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
-            </spirit:wireTypeDef>
-          </spirit:wireTypeDefs>
-        </spirit:wire>
-      </spirit:port>
-      <spirit:port>
-        <spirit:name>icap_i_1</spirit:name>
+        <spirit:name>icap_i_hbicap</spirit:name>
         <spirit:wire>
           <spirit:direction>in</spirit:direction>
           <spirit:vector>
@@ -838,7 +778,7 @@
         </spirit:wire>
       </spirit:port>
       <spirit:port>
-        <spirit:name>icap_o_1</spirit:name>
+        <spirit:name>icap_o_hbicap</spirit:name>
         <spirit:wire>
           <spirit:direction>out</spirit:direction>
           <spirit:vector>
@@ -855,7 +795,7 @@
         </spirit:wire>
       </spirit:port>
       <spirit:port>
-        <spirit:name>req</spirit:name>
+        <spirit:name>gate_icap_clk_hbicap</spirit:name>
         <spirit:wire>
           <spirit:direction>in</spirit:direction>
           <spirit:wireTypeDefs>
@@ -868,7 +808,20 @@
         </spirit:wire>
       </spirit:port>
       <spirit:port>
-        <spirit:name>gnt</spirit:name>
+        <spirit:name>req_hbicap</spirit:name>
+        <spirit:wire>
+          <spirit:direction>in</spirit:direction>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>std_logic</spirit:typeName>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>gnt_hbicap</spirit:name>
         <spirit:wire>
           <spirit:direction>out</spirit:direction>
           <spirit:wireTypeDefs>
@@ -881,12 +834,72 @@
         </spirit:wire>
       </spirit:port>
       <spirit:port>
-        <spirit:name>rel</spirit:name>
+        <spirit:name>rel_hbicap</spirit:name>
         <spirit:wire>
           <spirit:direction>out</spirit:direction>
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
               <spirit:typeName>std_logic</spirit:typeName>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>icap_csib_fgre</spirit:name>
+        <spirit:wire>
+          <spirit:direction>in</spirit:direction>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>std_logic</spirit:typeName>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>icap_rdwrb_fgre</spirit:name>
+        <spirit:wire>
+          <spirit:direction>in</spirit:direction>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>std_logic</spirit:typeName>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>icap_i_fgre</spirit:name>
+        <spirit:wire>
+          <spirit:direction>in</spirit:direction>
+          <spirit:vector>
+            <spirit:left spirit:format="long">31</spirit:left>
+            <spirit:right spirit:format="long">0</spirit:right>
+          </spirit:vector>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>std_logic_vector</spirit:typeName>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>icap_o_fgre</spirit:name>
+        <spirit:wire>
+          <spirit:direction>out</spirit:direction>
+          <spirit:vector>
+            <spirit:left spirit:format="long">31</spirit:left>
+            <spirit:right spirit:format="long">0</spirit:right>
+          </spirit:vector>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>std_logic_vector</spirit:typeName>
               <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
               <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
             </spirit:wireTypeDef>
@@ -924,7 +937,7 @@
       <spirit:file>
         <spirit:name>mux_ICAP.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
-        <spirit:userFileType>CHECKSUM_645bb43e</spirit:userFileType>
+        <spirit:userFileType>CHECKSUM_bcdf2f51</spirit:userFileType>
       </spirit:file>
     </spirit:fileSet>
     <spirit:fileSet>
@@ -999,18 +1012,18 @@
       </xilinx:taxonomies>
       <xilinx:displayName>mux_ICAP_v1_0</xilinx:displayName>
       <xilinx:definitionSource>package_project</xilinx:definitionSource>
-      <xilinx:coreRevision>6</xilinx:coreRevision>
-      <xilinx:coreCreationDateTime>2024-02-19T11:59:32Z</xilinx:coreCreationDateTime>
+      <xilinx:coreRevision>10</xilinx:coreRevision>
+      <xilinx:coreCreationDateTime>2024-05-23T14:00:44Z</xilinx:coreCreationDateTime>
       <xilinx:tags>
         <xilinx:tag xilinx:name="nopcore"/>
       </xilinx:tags>
     </xilinx:coreExtensions>
     <xilinx:packagingInfo>
       <xilinx:xilinxVersion>2023.1.1</xilinx:xilinxVersion>
-      <xilinx:checksum xilinx:scope="busInterfaces" xilinx:value="12a0f280"/>
+      <xilinx:checksum xilinx:scope="busInterfaces" xilinx:value="11d17a24"/>
       <xilinx:checksum xilinx:scope="memoryMaps" xilinx:value="0c04c4c2"/>
-      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="1d709f38"/>
-      <xilinx:checksum xilinx:scope="ports" xilinx:value="6723eb2a"/>
+      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="d2d16182"/>
+      <xilinx:checksum xilinx:scope="ports" xilinx:value="1f61b7f8"/>
       <xilinx:checksum xilinx:scope="hdlParameters" xilinx:value="67e6fb9f"/>
       <xilinx:checksum xilinx:scope="parameters" xilinx:value="384a0903"/>
     </xilinx:packagingInfo>
